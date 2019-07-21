@@ -12,10 +12,30 @@
   <p>Welcome to <%= title %></p>
   <button id="ID_btn_test1">Jquery button click action</button>
 
+  <div class="C_insert_form">
+    <div class="C_member_insert_form">
+      <input id="ID_input_name">
+      <input id="ID_input_password" type="password">
+      <button id="ID_btn_member_insert">전송</button>
+    </div>
+  </div>
+
   <script>
     $(document).ready(() => {
-      $('#ID_btn_test1').click(() => {
+
+      $('#ID_btn_test1').click(() => { // 버튼 클릭 이벤트 처리 테스트
         alert("clicked button!!");
+      });
+
+      $('#ID_btn_member_insert').click(() => { // 버튼 클릭시 서버로 입력값 전송
+        $.post('/member_insert',  // jquery post방식은 인자값 3개 ('url',{contents type js-object},callback function)
+          {
+            name: $('#ID_input_name').val(),
+            password: $('#ID_input_password').val(),
+          },
+          (data, satus) => {  // callback function 은 서버의 응답인 data와 연결결과인 status을 받음.
+            alert(" data : "+ data+"\n status : "+status+"\n data.name : "+data.name+"\n data.password : "+data.password+"\n data.msg : "+data.msg);
+          });
       });
     });
   </script>

@@ -18,6 +18,7 @@ app.use(cookieParser());
 
 app.use('/', require('./routes/index'));  // 한 번밖에 안쓰므로 변수 선언 없이 설정
 app.use('/users', require('./routes/users')); // 한 번밖에 안쓰므로 변수 선언 없이 설정
+app.use('/member_insert', require('./routes/member_insert'));  // 한 번밖에 안쓰므로 변수 선언 없이 설정
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
